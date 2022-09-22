@@ -435,8 +435,10 @@ class PDFMiner:
       
     
 def key_extracter(file):
-    converter(file)
-    if (PDFMiner.getPDFText(file)=='\x0c'):
+    with open ("testfile.pdf", 'wb') as pdf_file:
+        pdf_file.write(file)
+    converter("testfile.pdf")
+    if (PDFMiner.getPDFText("testfile.pdf")=='\x0c'):
         #rotation("testfile.jpg")
         img=tablet_deleter("testfile.jpg")
         text = data_extracter("testfile.jpg")
@@ -479,5 +481,3 @@ def key_extracter(file):
         data = {'inn': inn, 'kpp': kpp,'bik':bik,'cause':num,'date':date,'total_amount':sm,'total_vat':nds,'account':acc,'corr':cor}
     return(data)
 
-if __name__ == '__main__':
-    print(key_extracter('C:\\Users\\m.arkhipkin\\Desktop\\test-payment-ML\\testset\\2abed643ca28.pdf'))

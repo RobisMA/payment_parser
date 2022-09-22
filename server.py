@@ -6,10 +6,10 @@ Created on Fri Feb  4 12:44:50 2022
 """
 
 from fastapi import FastAPI, File
-import line_deleter
+import parser_payment
 
 app = FastAPI()
 
 @app.post('/files/')
 def home(file: bytes = File(...)):
-    return(line_deleter.key_extracter(file))
+    return(parser_payment.key_extracter(file))
